@@ -1523,6 +1523,16 @@ paths:
         - "$ref": "#/components/parameters/QueryPage"
         - "$ref": "#/components/parameters/QueryLimit"
         - "$ref": "#/components/parameters/QueryPageSize"
+        - name: search[with_deleted]
+          in: query
+          description: Includes archived members into the paginated result.
+          schema:
+            type: string
+        - name: search[only_deleted]
+          in: query
+          description: Excludes active members from the paginated result.
+          schema:
+            type: string
         - name: search[main_position_id]
           in: query
           description: The main_position_id used for the search applied on the query.
@@ -3548,6 +3558,10 @@ components:
         created_at:
           type: string
           description: When the member was created.
+          format: date-time
+        deleted_at:
+          type: string
+          description: When the member was archived.
           format: date-time
         profile:
           "$ref": "#/components/schemas/Profile"
